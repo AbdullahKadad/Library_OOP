@@ -22,13 +22,22 @@ if __name__ == "__main__":
     library.display_books()
 
     # Member borrows a book
-    member.borrow_book(book1)
+    member.borrow_book(book1, "I'll return the book after 2 days")
 
-    # Displaying books in the library after borrowing
-    library.display_books()
+    book1.get_status()
+    book1.get_return_msg()
+    print(book1.is_available)
+    print("______________")
+    book2.get_return_msg()
+    book2.get_status()
+    book2.get_title()
+    book2.get_author()
 
-    # Member returns a book
-    member.return_book(book1)
+    # # Displaying books in the library after borrowing
+    # library.display_books()
 
-    # Displaying books in the library after returning
-    library.display_books()
+    # # Member returns a book
+    # member.return_book(book1)
+
+    # # Displaying books in the library after returning
+    # library.display_books()

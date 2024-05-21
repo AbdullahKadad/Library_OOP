@@ -2,9 +2,9 @@
 
 Authors:
 
-- Abdullah Qdad
+- [Abdullah Qdad](https://github.com/Yaman-Katalan)
 
-- [some one](https://google.com)
+- [Mohamed Yaman Katalan](https://github.com/AbdullahKadad)
 
 ## OOP Principles
 
@@ -25,6 +25,23 @@ class Book:
         self.author = author
         self.isbn = isbn
         self.is_available = True
+        self._return_msg = "No message!"
+
+    def get_return_msg(self):
+        print(self._return_msg)
+        return self._return_msg
+    
+    def get_status(self):
+        print(f"Availability: {self.is_available}")
+        return self.is_available
+    
+    def get_title(self):
+        print(f"Title: {self.title}")
+        return "Done"
+
+    def get_author(self):
+        print(f"Author: {self.author}")
+        return "Done"
 
     def __str__(self):
         return f"{self.title} by {self.author}, ISBN: {self.isbn}, Available: {'Yes' if self.is_available else 'No'}"
@@ -37,14 +54,15 @@ class Person(ABC):
     def get_role(self):
         pass
 
-class Member(Person):
+    class Member(Person):
     def __init__(self, name):
         super().__init__(name)
         self.borrowed_books = []
 
-    def borrow_book(self, book):
+    def borrow_book(self, book, due_date):
         if book.is_available:
             book.is_available = False
+            book._return_msg = due_date
             self.borrowed_books.append(book)
             print(f"{self.name} borrowed {book.title}.")
         else:
@@ -53,6 +71,7 @@ class Member(Person):
     def return_book(self, book):
         if book in self.borrowed_books:
             book.is_available = True
+            book._return_msg = "No message!"
             self.borrowed_books.remove(book)
             print(f"{self.name} returned {book.title}.")
         else:
