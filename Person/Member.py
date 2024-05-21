@@ -14,10 +14,10 @@ class Member(Person):
         super().__init__(name)
         self.borrowed_books = []
 
-    def borrow_book(self, book):
+    def borrow_book(self, book, due_date):
         """
-        Allows the member to borrow a book from the library if it is available.
-
+        It  allows the member to borrow a book from the library if it is available.
+        It takes two params: book object and due_date message.
         This method checks if the book is available. If it is, the book's availability is set to False,
         the book is added to the member's list of borrowed books, and a message is printed.
         If the book is not available, an appropriate message is printed.
@@ -27,6 +27,7 @@ class Member(Person):
         """
         if book.is_available:
             book.is_available = False
+            book._return_msg = due_date
             self.borrowed_books.append(book)
             print(f"{self.name} borrowed {book.title}.")
         else:
@@ -45,6 +46,7 @@ class Member(Person):
         """
         if book in self.borrowed_books:
             book.is_available = True
+            book._return_msg = "No message!"
             self.borrowed_books.remove(book)
             print(f"{self.name} returned {book.title}.")
         else:
@@ -60,3 +62,6 @@ class Member(Person):
             str: The role of the person, which is "Member".
         """
         return "Member"
+    
+
+

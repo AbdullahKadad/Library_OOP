@@ -12,6 +12,7 @@ class Library:
         Returns:
             Library: The single instance of the Library class.
         """
+        
         if cls._instance is None:
             cls._instance = super(Library, cls).__new__(cls)
             cls._instance._initialize()

@@ -15,6 +15,23 @@ class Book:
         self.author = author
         self.isbn = isbn
         self.is_available = True
+        self._return_msg = "No message!"
+
+    def get_return_msg(self):
+        print(self._return_msg)
+        return self._return_msg
+    
+    def get_status(self):
+        print(f"Availability: {self.is_available}")
+        return self.is_available
+    
+    def get_title(self):
+        print(f"Title: {self.title}")
+        return "Done"
+
+    def get_author(self):
+        print(f"Author: {self.author}")
+        return "Done"
 
     def __str__(self):
         """

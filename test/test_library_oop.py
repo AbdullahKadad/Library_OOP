@@ -21,12 +21,12 @@ def sample_library():
     return Library()
 
 def test_borrow_book(sample_book, sample_member):
-    sample_member.borrow_book(sample_book)
+    sample_member.borrow_book(sample_book, "borrow msg")
     assert not sample_book.is_available
     assert sample_book in sample_member.borrowed_books
 
 def test_return_book(sample_book, sample_member):
-    sample_member.borrow_book(sample_book)
+    sample_member.borrow_book(sample_book, "borrow msg.")
     sample_member.return_book(sample_book)
     assert sample_book.is_available
     assert sample_book not in sample_member.borrowed_books
